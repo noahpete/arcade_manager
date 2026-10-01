@@ -2,6 +2,8 @@ class_name InteractableComponent
 extends Area2D
 
 signal interacted()
+signal player_entered(player: Player)
+signal player_exited(player: Player)
 
 var current_player: Node2D = null
 
@@ -23,9 +25,11 @@ func interact() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
+		player_entered.emit(body)
 		current_player = body
 
 
 func _on_body_exited(body: Node2D) -> void:
 	if body == current_player:
+		player_exited.emit(body)
 		current_player = null

@@ -104,13 +104,6 @@ tree_root = SubResource("AnimationNodeBlendTree_dovo2")
 anim_player = NodePath("../AnimationPlayer")
 parameters/movement/blend_position = 0.0
 
-[node name="Visuals" type="Node2D" parent="." unique_id=2008025311]
-
-[node name="Body" type="Sprite2D" parent="Visuals" unique_id=952165551]
-texture = ExtResource("1_8afob")
-centered = false
-offset = Vector2(-3, -6)
-
 [node name="InteractionArea" type="Area2D" parent="." unique_id=2021568550]
 position = Vector2(0, -3)
 collision_layer = 0
@@ -122,3 +115,10 @@ shape = SubResource("CircleShape2D_wcut5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=436075149]
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_dovo2")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=2008025311]
+
+[node name="Body" type="Sprite2D" parent="Visuals" unique_id=952165551]
+texture = ExtResource("1_8afob")
+centered = false
+offset = Vector2(-3, -6)
