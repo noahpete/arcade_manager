@@ -2,7 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://ihcwaspapk3u" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="Texture2D" uid="uid://0kqfowgatfdc" path="res://assets/tilemap.png" id="2_iuonh"]
-[ext_resource type="PackedScene" uid="uid://bhgd4e180xjxp" path="res://scenes/objects/counter/counter.tscn" id="2_k2fmo"]
+[ext_resource type="PackedScene" uid="uid://ddj6mda182wr1" path="res://scenes/objects/prop/counter/counter.tscn" id="2_k2fmo"]
+[ext_resource type="PackedScene" uid="uid://cg4dh5fjx8iv3" path="res://scenes/objects/prop/pinball_machine/pinball_machine.tscn" id="4_l3cfh"]
+[ext_resource type="PackedScene" uid="uid://dhn2d2dn07kuc" path="res://scenes/objects/prop/arcade_machine/arcade_machine.tscn" id="5_6q06x"]
+[ext_resource type="PackedScene" uid="uid://butpreo848wnt" path="res://scenes/objects/prop/stool/stool.tscn" id="6_ow5a4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k2fmo"]
 texture = ExtResource("2_iuonh")
@@ -14,6 +17,7 @@ sources/0 = SubResource("TileSetAtlasSource_k2fmo")
 [node name="Main" type="Node" unique_id=1697833261]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=971080370]
+zoom = Vector2(1.2, 1.2)
 
 [node name="World" type="Node2D" parent="." unique_id=2034687055]
 
@@ -27,6 +31,18 @@ tile_set = SubResource("TileSet_hyk8p")
 y_sort_enabled = true
 
 [node name="Counter" parent="World/YSortOrigin" unique_id=2089761166 instance=ExtResource("2_k2fmo")]
-position = Vector2(0, -12)
+position = Vector2(0, -9)
 
 [node name="Player" parent="World/YSortOrigin" unique_id=946345545 instance=ExtResource("1_hyk8p")]
+
+[node name="PinballMachine" parent="World/YSortOrigin" unique_id=1880048525 instance=ExtResource("4_l3cfh")]
+position = Vector2(-25, 0)
+
+[node name="PinballMachine2" parent="World/YSortOrigin" unique_id=2048167168 instance=ExtResource("4_l3cfh")]
+position = Vector2(-25, -8)
+
+[node name="ArcadeMachine" parent="World/YSortOrigin" unique_id=1851079744 instance=ExtResource("5_6q06x")]
+position = Vector2(-26, -20)
+
+[node name="Stool" parent="World/YSortOrigin" unique_id=414231153 instance=ExtResource("6_ow5a4")]
+position = Vector2(-17, -28)

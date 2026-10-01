@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://butpreo848wnt"]
+
+[ext_resource type="PackedScene" uid="uid://bhgd4e180xjxp" path="res://scenes/objects/prop/prop.tscn" id="1_ywayb"]
+[ext_resource type="Texture2D" uid="uid://co2romeqdi6s8" path="res://stool.png" id="2_rgppn"]
+
+[node name="Stool" unique_id=2089761166 instance=ExtResource("1_ywayb")]
+
+[node name="Sprite2D" parent="." index="2" unique_id=1667511205]
+texture = ExtResource("2_rgppn")

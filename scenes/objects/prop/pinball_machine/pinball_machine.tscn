@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cg4dh5fjx8iv3"]
+
+[ext_resource type="PackedScene" uid="uid://bhgd4e180xjxp" path="res://scenes/objects/prop/prop.tscn" id="1_m6idx"]
+[ext_resource type="Texture2D" uid="uid://k1mvty5yh0i" path="res://pinball_machine_0.png" id="2_b7tij"]
+[ext_resource type="Shader" uid="uid://ucwwdt0540v5" path="res://shaders/outline.gdshader" id="2_obx6v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_obx6v"]
+shader = ExtResource("2_obx6v")
+shader_parameter/outline_color = Color(1, 1, 1, 0)
+shader_parameter/outline_width = 1.0000000475
+
+[node name="PinballMachine" unique_id=2089761166 instance=ExtResource("1_m6idx")]
+
+[node name="Sprite2D" parent="." index="2" unique_id=1667511205]
+material = SubResource("ShaderMaterial_obx6v")
+texture = ExtResource("2_b7tij")
+offset = Vector2(-8, -17)

@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bhgd4e180xjxp"]
+
+[ext_resource type="Script" uid="uid://caqldbbbglivr" path="res://scenes/objects/prop/prop.gd" id="1_0ih06"]
+[ext_resource type="PackedScene" uid="uid://b3vsbx44ke76r" path="res://scenes/components/interactable_component/interactable_component.tscn" id="1_2k8gp"]
+[ext_resource type="Shader" uid="uid://ucwwdt0540v5" path="res://shaders/outline.gdshader" id="3_sctvq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ohrdy"]
+shader = ExtResource("3_sctvq")
+shader_parameter/outline_color = Color(1, 1, 1, 0)
+shader_parameter/outline_width = 1.0000000475
+
+[node name="Prop" type="StaticBody2D" unique_id=2089761166]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_0ih06")
+
+[node name="InteractableComponent" parent="." unique_id=1509468497 instance=ExtResource("1_2k8gp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent" unique_id=2060555258]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591705046]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1667511205]
+material = SubResource("ShaderMaterial_ohrdy")
+centered = false
