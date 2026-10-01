@@ -1,14 +1,112 @@
 [gd_scene format=3 uid="uid://ihcwaspapk3u"]
 
 [ext_resource type="Texture2D" uid="uid://dmyovymmxx8fp" path="res://guy.png" id="1_8afob"]
+[ext_resource type="Script" uid="uid://ctt03bh64ka1k" path="res://scenes/player/player.gd" id="1_dovo2"]
+
+[sub_resource type="Animation" id="Animation_dovo2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_8afob"]
+resource_name = "walk"
+length = 0.27999999999999997
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Body:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -2), Vector2(2, 0), Vector2(0, -2), Vector2(-2, 0), Vector2(0, -2)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Body:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.28),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.20943952, 0.0, -0.20943952, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dovo2"]
+_data = {
+&"RESET": SubResource("Animation_dovo2"),
+&"walk": SubResource("Animation_8afob")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dovo2"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gmlin"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_lvxji"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_dovo2")
+blend_point_0/pos = 0.0
+blend_point_0/name = &"RESET"
+blend_point_1/node = SubResource("AnimationNodeAnimation_gmlin")
+blend_point_1/pos = 1.0
+blend_point_1/name = &"walk"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_dovo2"]
+graph_offset = Vector2(-436.48032, 1.2800294)
+nodes/movement/node = SubResource("AnimationNodeBlendSpace1D_lvxji")
+nodes/movement/position = Vector2(40, 120)
+node_connections = [&"output", 0, &"movement"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dovo2"]
 size = Vector2(6, 6)
 
 [node name="Player" type="CharacterBody2D" unique_id=946345545]
+script = ExtResource("1_dovo2")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=952165551]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1289503087]
+libraries/ = SubResource("AnimationLibrary_dovo2")
+
+[node name="AnimationTree" type="AnimationTree" parent="." unique_id=1750059887]
+tree_root = SubResource("AnimationNodeBlendTree_dovo2")
+anim_player = NodePath("../AnimationPlayer")
+parameters/movement/blend_position = 0.0
+
+[node name="Visuals" type="Node2D" parent="." unique_id=2008025311]
+
+[node name="Body" type="Sprite2D" parent="Visuals" unique_id=952165551]
 texture = ExtResource("1_8afob")
+centered = false
+offset = Vector2(-3, -6)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=436075149]
+position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_dovo2")
