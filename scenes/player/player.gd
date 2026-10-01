@@ -1,7 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
-const MAX_MOVE_SPEED: float = 80.0
+const MAX_MOVE_SPEED: float = 60.0
 const BLEND_SPEED: float = 8.0
 
 @onready var animation_tree: AnimationTree = $AnimationTree

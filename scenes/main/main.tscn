@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://ihcwaspapk3u" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="Texture2D" uid="uid://0kqfowgatfdc" path="res://assets/tilemap.png" id="2_iuonh"]
+[ext_resource type="PackedScene" uid="uid://bhgd4e180xjxp" path="res://scenes/objects/counter/counter.tscn" id="2_k2fmo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k2fmo"]
 texture = ExtResource("2_iuonh")
@@ -22,4 +23,10 @@ sources/0 = SubResource("TileSetAtlasSource_k2fmo")
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAABAP7/AAAAAAAAAAABAAEAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hyk8p")
 
-[node name="Player" parent="World" unique_id=946345545 instance=ExtResource("1_hyk8p")]
+[node name="YSortOrigin" type="Node2D" parent="World" unique_id=1173161168]
+y_sort_enabled = true
+
+[node name="Counter" parent="World/YSortOrigin" unique_id=2089761166 instance=ExtResource("2_k2fmo")]
+position = Vector2(0, -12)
+
+[node name="Player" parent="World/YSortOrigin" unique_id=946345545 instance=ExtResource("1_hyk8p")]
