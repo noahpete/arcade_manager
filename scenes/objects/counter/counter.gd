@@ -1,0 +1,2 @@
+class_name Counter
+extends StaticBody2D

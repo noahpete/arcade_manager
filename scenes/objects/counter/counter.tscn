@@ -1,11 +1,27 @@
 [gd_scene format=3 uid="uid://bhgd4e180xjxp"]
 
+[ext_resource type="Script" uid="uid://caqldbbbglivr" path="res://scenes/objects/counter/counter.gd" id="1_0ih06"]
+[ext_resource type="PackedScene" uid="uid://b3vsbx44ke76r" path="res://scenes/components/interactable_component/interactable_component.tscn" id="1_2k8gp"]
 [ext_resource type="Texture2D" uid="uid://boky2r2t60xj4" path="res://counter.png" id="1_6y2ow"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wcut5"]
+radius = 8.0
+height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcut5"]
 size = Vector2(12, 4)
 
 [node name="Counter" type="StaticBody2D" unique_id=2089761166]
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_0ih06")
+
+[node name="InteractableComponent" parent="." unique_id=1509468497 instance=ExtResource("1_2k8gp")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableComponent" unique_id=2060555258]
+position = Vector2(0, -4)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_wcut5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1367234499]
 texture = ExtResource("1_6y2ow")
