@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://cg4dh5fjx8iv3"]
+
+[ext_resource type="PackedScene" uid="uid://bhgd4e180xjxp" path="res://scenes/entities/attractions/attraction.tscn" id="1_m6idx"]
+[ext_resource type="Texture2D" uid="uid://k1mvty5yh0i" path="res://assets/pinball.png" id="2_b7tij"]
+[ext_resource type="Shader" uid="uid://ucwwdt0540v5" path="res://resources/shaders/outline.gdshader" id="2_obx6v"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c2uee"]
+radius = 4.0
+height = 24.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2uee"]
+size = Vector2(11, 6)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_obx6v"]
+resource_local_to_scene = true
+shader = ExtResource("2_obx6v")
+shader_parameter/outline_color = Color(1, 1, 1, 0)
+shader_parameter/outline_width = 1.0000000475
+
+[node name="PinballMachine" unique_id=2089761166 instance=ExtResource("1_m6idx")]
+
+[node name="CollisionShape2D" parent="InteractableComponent" parent_id_path=PackedInt32Array(1509468497) index="0" unique_id=2060555258]
+visible = false
+position = Vector2(4, -2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_c2uee")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=591705046]
+visible = false
+position = Vector2(2.5, -4)
+shape = SubResource("RectangleShape2D_c2uee")
+
+[node name="Sprite2D" parent="." index="2" unique_id=1667511205]
+material = SubResource("ShaderMaterial_obx6v")
+texture = ExtResource("2_b7tij")
+offset = Vector2(-8, -15)

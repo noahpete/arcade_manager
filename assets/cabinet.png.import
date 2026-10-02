@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k1mvty5yh0i"
-path="res://.godot/imported/pinball_machine_0.png-c405ee30c6cbd295e9db7d878b4629b9.ctex"
+uid="uid://djkl2ot8ge16w"
+path="res://.godot/imported/cabinet.png-4a579ac12d300aec4203ebc00a4031cb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://pinball_machine_0.png"
-dest_files=["res://.godot/imported/pinball_machine_0.png-c405ee30c6cbd295e9db7d878b4629b9.ctex"]
+source_file="res://assets/cabinet.png"
+dest_files=["res://.godot/imported/cabinet.png-4a579ac12d300aec4203ebc00a4031cb.ctex"]
 
 [params]
 

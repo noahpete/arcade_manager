@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bg6v0g54cdhmw"]
+
+[ext_resource type="Script" uid="uid://dwl60s74f0la4" path="res://scenes/ui/attraction_menu_option/attraction_menu_option.gd" id="1_7a7gp"]
+[ext_resource type="Texture2D" uid="uid://djkl2ot8ge16w" path="res://assets/cabinet.png" id="1_hbm61"]
+
+[node name="AttractionMenuOption" type="HBoxContainer" unique_id=1704593327]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_7a7gp")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1583073039]
+layout_mode = 2
+texture = ExtResource("1_hbm61")
+stretch_mode = 2
+
+[node name="Details" type="VBoxContainer" parent="." unique_id=584209714]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Details" unique_id=576293590]
+layout_mode = 2
+text = "Game"

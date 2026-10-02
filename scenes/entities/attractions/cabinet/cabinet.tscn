@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dhn2d2dn07kuc"]
+
+[ext_resource type="PackedScene" uid="uid://bhgd4e180xjxp" path="res://scenes/entities/attractions/attraction.tscn" id="1_oxk3f"]
+[ext_resource type="Texture2D" uid="uid://djkl2ot8ge16w" path="res://assets/cabinet.png" id="2_k5403"]
+[ext_resource type="Shader" uid="uid://ucwwdt0540v5" path="res://resources/shaders/outline.gdshader" id="2_ua0bn"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5mym"]
+radius = 6.0
+height = 22.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h11m2"]
+size = Vector2(11, 7)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ua0bn"]
+shader = ExtResource("2_ua0bn")
+shader_parameter/outline_color = Color(1, 1, 1, 0)
+shader_parameter/outline_width = 1.0000000475
+
+[node name="ArcadeMachine" unique_id=2089761166 instance=ExtResource("1_oxk3f")]
+
+[node name="CollisionShape2D" parent="InteractableComponent" parent_id_path=PackedInt32Array(1509468497) index="0" unique_id=2060555258]
+visible = false
+position = Vector2(4, -2)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_u5mym")
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=591705046]
+visible = false
+position = Vector2(1.5, -4.5)
+shape = SubResource("RectangleShape2D_h11m2")
+
+[node name="Sprite2D" parent="." index="2" unique_id=1667511205]
+material = SubResource("ShaderMaterial_ua0bn")
+texture = ExtResource("2_k5403")
+offset = Vector2(-7, -21)

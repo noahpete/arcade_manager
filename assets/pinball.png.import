@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boky2r2t60xj4"
-path="res://.godot/imported/counter.png-234207086292c8e211d30e9a7db4130d.ctex"
+uid="uid://k1mvty5yh0i"
+path="res://.godot/imported/pinball.png-19ec52053da29a1f99f53fc076ae8704.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://counter.png"
-dest_files=["res://.godot/imported/counter.png-234207086292c8e211d30e9a7db4130d.ctex"]
+source_file="res://assets/pinball.png"
+dest_files=["res://.godot/imported/pinball.png-19ec52053da29a1f99f53fc076ae8704.ctex"]
 
 [params]
 

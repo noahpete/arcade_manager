@@ -1,4 +1,4 @@
-class_name Prop
+class_name Counter
 extends StaticBody2D
 
 @onready var interactable_component: InteractableComponent = $InteractableComponent
