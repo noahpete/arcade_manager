@@ -9,7 +9,7 @@ static var _overlapping: Array[InteractableComponent] = []
 static var _focused: InteractableComponent = null
 static var _last_refresh_frame: int = -1
 
-var current_player: Node2D = null
+var _current_player: Node2D = null
 
 
 func _ready() -> void:
@@ -28,7 +28,7 @@ func _process(_delta: float) -> void:
 	if frame == _last_refresh_frame:
 		return
 	_last_refresh_frame = frame
-	_refresh_focus(current_player)
+	_refresh_focus(_current_player)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -64,19 +64,19 @@ func _leave() -> void:
 	if _focused == self:
 		_focused = null
 		focus_lost.emit()
-	if current_player:
-		_refresh_focus(current_player)
+	if _current_player:
+		_refresh_focus(_current_player)
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Player:
-		current_player = body
+		_current_player = body
 		_overlapping.append(self)
 		set_process(true)
 		_refresh_focus(body)
 
 
 func _on_body_exited(body: Node2D) -> void:
-	if body == current_player:
+	if body == _current_player:
 		_leave()
-		current_player = null
+		_current_player = null

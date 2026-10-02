@@ -26,5 +26,5 @@ func _update_visuals(delta: float, movement_vector: Vector2) -> void:
 		BLEND_SPEED * delta,
 	)
 
-	if not movement_vector.is_zero_approx():
+	if not movement_vector.x == 0.0:
 		visuals.scale.x = 1 if movement_vector.x >= 0 else -1
