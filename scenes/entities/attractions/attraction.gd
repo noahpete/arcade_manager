@@ -6,13 +6,10 @@ extends StaticBody2D
 
 
 func _ready() -> void:
-	interactable_component.player_entered.connect(_on_player_entered)
-	interactable_component.player_exited.connect(_on_player_exited)
+	interactable_component.focus_gained.connect(_set_outlined.bind(true))
+	interactable_component.focus_lost.connect(_set_outlined.bind(false))
 
 
-func _on_player_entered(_player: Player) -> void:
-	sprite_2d.material.set("shader_parameter/outline_color", Vector4.ONE)
-
-
-func _on_player_exited(_player: Player) -> void:
-	sprite_2d.material.set("shader_parameter/outline_color", Vector4.ZERO)
+func _set_outlined(outlined: bool) -> void:
+	var color: Vector4 = Vector4.ONE if outlined else Vector4.ZERO
+	sprite_2d.material.set("shader_parameter/outline_color", color)
