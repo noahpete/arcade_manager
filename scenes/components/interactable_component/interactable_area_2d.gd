@@ -1,12 +1,12 @@
-class_name InteractableComponent
+class_name InteractableArea2D
 extends Area2D
 
 signal interacted()
 signal focus_gained()
 signal focus_lost()
 
-static var _overlapping: Array[InteractableComponent] = []
-static var _focused: InteractableComponent = null
+static var _overlapping: Array[InteractableArea2D] = []
+static var _focused: InteractableArea2D = null
 static var _last_refresh_frame: int = -1
 
 var _current_player: Node2D = null
@@ -42,9 +42,9 @@ func interact() -> void:
 
 
 static func _refresh_focus(player: Node2D) -> void:
-	var nearest: InteractableComponent = null
+	var nearest: InteractableArea2D = null
 	var nearest_distance: float = INF
-	for component: InteractableComponent in _overlapping:
+	for component: InteractableArea2D in _overlapping:
 		var distance: float = component.global_position.distance_squared_to(player.global_position)
 		if distance < nearest_distance:
 			nearest_distance = distance

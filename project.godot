@@ -37,6 +37,10 @@ window/stretch/scale_mode="integer"
 
 enabled=PackedStringArray("res://addons/gdscript_formatter/GDQuest_GDScript_formatter/plugin.cfg")
 
+[global_group]
+
+attractions=""
+
 [input]
 
 up={

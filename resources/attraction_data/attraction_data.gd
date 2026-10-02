@@ -2,4 +2,5 @@ class_name AttractionData
 extends Resource
 
 @export var title: String
-@export var icon: Texture2D
+@export var texture: Texture2D
+@export var footprint: Vector2i

@@ -1,19 +1,14 @@
 class_name Counter
 extends StaticBody2D
 
-@onready var interactable_component: InteractableComponent = $InteractableComponent
-@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var interactable_area_2d: InteractableArea2D = $InteractableComponent
+@onready var outlined_sprite_2d: OutlinedSprite2D = $OutlinedSprite2D
 
 
 func _ready() -> void:
-	interactable_component.interacted.connect(_on_interacted)
-	interactable_component.focus_gained.connect(_set_outlined.bind(true))
-	interactable_component.focus_lost.connect(_on_focus_lost)
-
-
-func _set_outlined(outlined: bool) -> void:
-	var color: Vector4 = Vector4.ONE if outlined else Vector4.ZERO
-	sprite_2d.material.set("shader_parameter/outline_color", color)
+	interactable_area_2d.interacted.connect(_on_interacted)
+	interactable_area_2d.focus_gained.connect(outlined_sprite_2d.set_outline.bind(true))
+	interactable_area_2d.focus_lost.connect(_on_focus_lost)
 
 
 func _on_interacted() -> void:
@@ -21,5 +16,5 @@ func _on_interacted() -> void:
 
 
 func _on_focus_lost() -> void:
-	_set_outlined(false)
+	outlined_sprite_2d.set_outline(false)
 	Events.attraction_menu_close_requested.emit()

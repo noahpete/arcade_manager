@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="AttractionData" format=3 uid="uid://bgomwm5w2el4"]
 
-[ext_resource type="Texture2D" uid="uid://djkl2ot8ge16w" path="res://assets/arcade_game.png" id="1_nvu68"]
 [ext_resource type="Script" uid="uid://dtsu7xvs54tiq" path="res://resources/attraction_data/attraction_data.gd" id="1_tk25y"]
+[ext_resource type="Texture2D" uid="uid://djkl2ot8ge16w" path="res://assets/cabinet.png" id="2_nvu68"]
 
 [resource]
 script = ExtResource("1_tk25y")
 title = "Cabinet"
-icon = ExtResource("1_nvu68")
+texture = ExtResource("2_nvu68")
+footprint = Vector2i(1, 1)
 metadata/_custom_type_script = "uid://dtsu7xvs54tiq"

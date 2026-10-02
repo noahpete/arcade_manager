@@ -18,7 +18,9 @@ static func create(attraction_data: AttractionData) -> AttractionMenuOption:
 
 
 func _ready() -> void:
-	_apply()
+	if data:
+		icon.texture = data.texture
+		title.text = data.title
 
 
 func _gui_input(event):
@@ -26,10 +28,3 @@ func _gui_input(event):
 		"InputEventMouseButton":
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 				selected.emit(data)
-
-
-func _apply() -> void:
-	if not data:
-		return
-	icon.texture = data.icon
-	title.text = data.title

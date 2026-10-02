@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://732ebm42merr" path="res://scenes/entities/counter/counter.gd" id="1_ta5lq"]
 [ext_resource type="Texture2D" uid="uid://boky2r2t60xj4" path="res://assets/counter.png" id="2_2k8gp"]
-[ext_resource type="Shader" uid="uid://ucwwdt0540v5" path="res://resources/shaders/outline.gdshader" id="2_k1vud"]
-[ext_resource type="PackedScene" uid="uid://b3vsbx44ke76r" path="res://scenes/components/interactable_component/interactable_component.tscn" id="2_u5mym"]
+[ext_resource type="PackedScene" uid="uid://b3vsbx44ke76r" path="res://scenes/components/interactable_component/interactable_area_2d.tscn" id="2_u5mym"]
+[ext_resource type="PackedScene" uid="uid://12t86xqrfn8" path="res://scenes/components/outlined_sprite_2d/outlined_sprite_2d.tscn" id="5_u5mym"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2k8gp"]
 radius = 8.0
@@ -11,11 +11,6 @@ height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2k8gp"]
 size = Vector2(12, 4)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_57uv3"]
-shader = ExtResource("2_k1vud")
-shader_parameter/outline_color = Color(1, 1, 1, 0)
-shader_parameter/outline_width = 1.0000000475
 
 [node name="Counter" type="StaticBody2D" unique_id=2089761166]
 collision_layer = 16
@@ -29,12 +24,10 @@ position = Vector2(0, -4)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_2k8gp")
 
+[node name="OutlinedSprite2D" parent="." unique_id=891692175 instance=ExtResource("5_u5mym")]
+texture = ExtResource("2_2k8gp")
+offset = Vector2(-9, -8)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591705046]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_2k8gp")
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1667511205]
-material = SubResource("ShaderMaterial_57uv3")
-texture = ExtResource("2_2k8gp")
-centered = false
-offset = Vector2(-9, -8)
