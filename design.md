@@ -184,6 +184,9 @@ Keep the game **playable at all times**. Use placeholder art until the core loop
 
 - Player can play own machines to get tickets
   - Use tickets to buy the prizes (from their own stock) they've purchased stock of online
+- Upgrades
+  - Can buy bigger bags for larger hauls from bank of coins
+  - Services to fill coins for you
 
 - Polish
   - Particles: add shines around prizes, frustration/emotes above characters, etc.
