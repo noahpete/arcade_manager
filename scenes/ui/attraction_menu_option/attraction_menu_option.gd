@@ -29,6 +29,7 @@ func _gui_input(event):
 
 
 func _apply() -> void:
-	assert(data)
+	if not data:
+		return
 	icon.texture = data.icon
 	title.text = data.title

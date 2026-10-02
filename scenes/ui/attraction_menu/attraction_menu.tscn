@@ -5,7 +5,6 @@
 [ext_resource type="Resource" uid="uid://bgomwm5w2el4" path="res://resources/attraction_data/cabinet_data.tres" id="3_2qnvw"]
 
 [node name="AttractionMenu" type="VBoxContainer" unique_id=893656229]
-offset_right = 40.0
-offset_bottom = 40.0
+size_flags_horizontal = 0
 script = ExtResource("1_xkgjh")
 attractions = Array[ExtResource("2_8numt")]([ExtResource("3_2qnvw")])
