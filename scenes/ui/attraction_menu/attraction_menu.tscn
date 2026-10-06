@@ -3,8 +3,9 @@
 [ext_resource type="Script" uid="uid://cuvqalme4swk7" path="res://scenes/ui/attraction_menu/attraction_menu.gd" id="1_xkgjh"]
 [ext_resource type="Script" uid="uid://dtsu7xvs54tiq" path="res://resources/attraction_data/attraction_data.gd" id="2_8numt"]
 [ext_resource type="Resource" uid="uid://bgomwm5w2el4" path="res://resources/attraction_data/cabinet_data.tres" id="3_2qnvw"]
+[ext_resource type="Resource" uid="uid://ceckyxmadexaw" path="res://resources/attraction_data/pinball_data.tres" id="4_2qnvw"]
 
 [node name="AttractionMenu" type="VBoxContainer" unique_id=893656229]
 size_flags_horizontal = 0
 script = ExtResource("1_xkgjh")
-attractions = Array[ExtResource("2_8numt")]([ExtResource("3_2qnvw")])
+attractions = Array[ExtResource("2_8numt")]([ExtResource("3_2qnvw"), ExtResource("4_2qnvw")])

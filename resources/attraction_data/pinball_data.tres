@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AttractionData" format=3 uid="uid://ceckyxmadexaw"]
+
+[ext_resource type="Script" uid="uid://dtsu7xvs54tiq" path="res://resources/attraction_data/attraction_data.gd" id="1_5olpk"]
+[ext_resource type="Texture2D" uid="uid://k1mvty5yh0i" path="res://assets/pinball.png" id="2_3wkjd"]
+
+[resource]
+script = ExtResource("1_5olpk")
+id = "pinball"
+title = "Pinball"
+texture = ExtResource("2_3wkjd")
+footprint = Vector2(1.5, 0.5)
+metadata/_custom_type_script = "uid://dtsu7xvs54tiq"

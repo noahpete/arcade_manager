@@ -41,6 +41,7 @@ Layered on top:
 ### Arcade (core)
 - [X] Player movement and interaction (interact key near objects)
 - [ ] Tile-based arcade floor with grid placement
+  - --> TODO: convert Modes to state machine
 - [ ] Machine placement, moving, and selling
 - [ ] Machine data: price, payout, popularity, size, minigame
 - [ ] Customers who walk in, pick a machine, play, and pay

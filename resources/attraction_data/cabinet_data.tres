@@ -5,7 +5,8 @@
 
 [resource]
 script = ExtResource("1_tk25y")
+id = "cabinet"
 title = "Cabinet"
 texture = ExtResource("2_nvu68")
-footprint = Vector2i(1, 1)
+footprint = Vector2(1, 1)
 metadata/_custom_type_script = "uid://dtsu7xvs54tiq"

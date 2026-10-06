@@ -51,16 +51,20 @@ size = Vector2(11, 7)
 [node name="Cabinet" unique_id=2089761166 instance=ExtResource("1_oxk3f")]
 script = ExtResource("2_63yb7")
 
-[node name="CollisionShape2D" parent="InteractableArea2D" parent_id_path=PackedInt32Array(1509468497) index="0" unique_id=2060555258]
+[node name="InteractableArea2D" parent="." index="0" unique_id=1509468497]
+position = Vector2(7, 0)
+
+[node name="CollisionShape2D" parent="InteractableArea2D" index="0" unique_id=2060555258]
 position = Vector2(4, -2)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_u5mym")
 
 [node name="OutlinedSprite2D" parent="." index="1" unique_id=891692175]
 material = SubResource("ShaderMaterial_h11m2")
+position = Vector2(7, 0)
 texture = ExtResource("2_k5403")
 offset = Vector2(-8, -21)
 
 [node name="CollisionShape2D" parent="." index="2" unique_id=591705046]
-position = Vector2(1.5, -4.5)
+position = Vector2(8.5, -4.5)
 shape = SubResource("RectangleShape2D_h11m2")

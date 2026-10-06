@@ -39,7 +39,7 @@ void fragment() {
 }
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kunkr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c2uee"]
 resource_local_to_scene = true
 shader = SubResource("Shader_vldwu")
 shader_parameter/outline_color = Color(1, 1, 1, 0)
@@ -51,16 +51,20 @@ size = Vector2(11, 6)
 [node name="PinballMachine" unique_id=2089761166 instance=ExtResource("1_m6idx")]
 script = ExtResource("2_c2uee")
 
-[node name="CollisionShape2D" parent="InteractableArea2D" parent_id_path=PackedInt32Array(1509468497) index="0" unique_id=2060555258]
+[node name="InteractableArea2D" parent="." index="0" unique_id=1509468497]
+position = Vector2(8, 0)
+
+[node name="CollisionShape2D" parent="InteractableArea2D" index="0" unique_id=2060555258]
 position = Vector2(4, -2)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_c2uee")
 
 [node name="OutlinedSprite2D" parent="." index="1" unique_id=891692175]
-material = SubResource("ShaderMaterial_kunkr")
+material = SubResource("ShaderMaterial_c2uee")
+position = Vector2(8, 0)
 texture = ExtResource("2_b7tij")
 offset = Vector2(-9, -15)
 
 [node name="CollisionShape2D" parent="." index="2" unique_id=591705046]
-position = Vector2(2.5, -4)
+position = Vector2(10.5, -4)
 shape = SubResource("RectangleShape2D_c2uee")

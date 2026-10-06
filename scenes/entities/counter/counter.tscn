@@ -1,16 +1,55 @@
 [gd_scene format=3 uid="uid://ddj6mda182wr1"]
 
 [ext_resource type="Script" uid="uid://732ebm42merr" path="res://scenes/entities/counter/counter.gd" id="1_ta5lq"]
-[ext_resource type="Texture2D" uid="uid://boky2r2t60xj4" path="res://assets/counter.png" id="2_2k8gp"]
-[ext_resource type="PackedScene" uid="uid://b3vsbx44ke76r" path="res://scenes/components/interactable_component/interactable_area_2d.tscn" id="2_u5mym"]
+[ext_resource type="PackedScene" uid="uid://b3vsbx44ke76r" path="res://scenes/components/interactable_area_2d/interactable_area_2d.tscn" id="2_u5mym"]
+[ext_resource type="Texture2D" uid="uid://cwsxm5d0vgckw" path="res://assets/counter_large.png" id="4_ta5lq"]
+[ext_resource type="Texture2D" uid="uid://dt8yekuo75cbj" path="res://assets/register.png" id="5_cm5n2"]
 [ext_resource type="PackedScene" uid="uid://12t86xqrfn8" path="res://scenes/components/outlined_sprite_2d/outlined_sprite_2d.tscn" id="5_u5mym"]
+[ext_resource type="Texture2D" uid="uid://v2hnvc5no7kk" path="res://assets/computer.png" id="6_mw0db"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2k8gp"]
 radius = 8.0
-height = 24.0
+height = 38.0
+
+[sub_resource type="Shader" id="Shader_vldwu"]
+code = "shader_type canvas_item;
+
+uniform vec4 outline_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
+uniform float outline_width : hint_range(0.0, 10.0) = 2.0;
+
+void fragment() {
+    vec4 col = texture(TEXTURE, UV);
+
+    // Check if the current pixel is transparent
+    if (col.a == 0.0) {
+        vec2 size = TEXTURE_PIXEL_SIZE * outline_width;
+
+        // Sample neighboring pixels (Up, Down, Left, Right)
+        float alpha = texture(TEXTURE, UV + vec2(0.0, size.y)).a;
+        alpha += texture(TEXTURE, UV - vec2(0.0, size.y)).a;
+        alpha += texture(TEXTURE, UV + vec2(size.x, 0.0)).a;
+        alpha += texture(TEXTURE, UV - vec2(size.x, 0.0)).a;
+
+        // If any neighbor is solid, draw the outline
+        if (alpha > 0.0) {
+            COLOR = outline_color;
+        } else {
+            COLOR = col;
+        }
+    } else {
+        COLOR = col;
+    }
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cm5n2"]
+resource_local_to_scene = true
+shader = SubResource("Shader_vldwu")
+shader_parameter/outline_color = Color(1, 1, 1, 0)
+shader_parameter/outline_width = 1.0000000475
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2k8gp"]
-size = Vector2(12, 4)
+size = Vector2(28, 4)
 
 [node name="Counter" type="StaticBody2D" unique_id=2089761166]
 collision_layer = 16
@@ -25,9 +64,22 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_2k8gp")
 
 [node name="OutlinedSprite2D" parent="." unique_id=891692175 instance=ExtResource("5_u5mym")]
-texture = ExtResource("2_2k8gp")
-offset = Vector2(-9, -8)
+material = SubResource("ShaderMaterial_cm5n2")
+texture = ExtResource("4_ta5lq")
+offset = Vector2(-17, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591705046]
 position = Vector2(0, -3)
 shape = SubResource("RectangleShape2D_2k8gp")
+
+[node name="Register" type="Sprite2D" parent="." unique_id=1890007178]
+position = Vector2(-10, -7)
+texture = ExtResource("5_cm5n2")
+centered = false
+offset = Vector2(-4, -8)
+
+[node name="Computer" type="Sprite2D" parent="." unique_id=678191065]
+position = Vector2(9, -7)
+texture = ExtResource("6_mw0db")
+centered = false
+offset = Vector2(-6, -10)

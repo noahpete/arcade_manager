@@ -52,4 +52,4 @@ func _populate(list: Array[AttractionData]) -> void:
 
 
 func _on_option_selected(data: AttractionData) -> void:
-	print("Attraction: ", data.title)
+	Events.attraction_menu_option_selected.emit(data)
