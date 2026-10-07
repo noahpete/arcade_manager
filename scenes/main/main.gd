@@ -14,7 +14,7 @@ var _grid_size: int
 var _attraction_preview: Attraction
 
 @onready var _player: Player = %Player
-@onready var _tile_map_layer: TileMapLayer = %Floor
+@onready var _tile_map_layer: TileMapLayer = %Ground
 @onready var _props: Node2D = %Props
 
 
