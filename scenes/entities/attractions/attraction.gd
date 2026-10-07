@@ -6,6 +6,7 @@ var _is_preview: bool = false
 
 @onready var interactable_area_2d: InteractableArea2D = $InteractableArea2D
 @onready var outlined_sprite_2d: OutlinedSprite2D = $OutlinedSprite2D
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 
 static func create_attraction(data: AttractionData, is_preview: bool = false) -> Attraction:
@@ -34,6 +35,18 @@ func _ready() -> void:
 
 func get_data() -> AttractionData:
 	return _data
+
+
+func get_collision_shape() -> Shape2D:
+	return collision_shape_2d.shape
+
+
+func get_collision_offset() -> Vector2:
+	return collision_shape_2d.position
+
+
+func set_valid(is_valid: bool) -> void:
+	modulate = Color(1.0, 1.0, 1.0, 0.5) if is_valid else Color(1.0, 0.3, 0.3, 0.5)
 
 
 func enable_preview() -> void:

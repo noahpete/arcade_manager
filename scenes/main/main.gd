@@ -3,6 +3,7 @@ extends Node
 
 const GRID_DIVISIONS: float = 2.0
 const GRID_MOUSE_OFFSET: Vector2 = Vector2(0.0, 10.0)
+const ATTRACTION_COLLISION_LAYER: int = 1 << 4 # Layer 5 (value 16)
 
 var state_machine: StateMachine = StateMachine.new()
 var current_state: String:
@@ -53,7 +54,9 @@ func _enter_state_free() -> void:
 
 
 func _state_layout(_delta: float) -> void:
-	_attraction_preview.global_position = _get_mouse_tile() * _grid_size
+	var world_position: Vector2 = _get_mouse_tile() * _grid_size
+	_attraction_preview.global_position = world_position
+	_attraction_preview.set_valid(_can_place_attraction(_attraction_preview, world_position))
 
 
 func _enter_state_layout() -> void:
@@ -87,22 +90,34 @@ func _convert_world_position_to_tile(world_position: Vector2) -> Vector2i:
 	return Vector2i(tile_position.x as int, tile_position.y as int)
 
 
-func _on_attraction_menu_option_selected(data: AttractionData) -> void:
-	_create_preview(data)
-
-	current_state = "_state_layout"
-
-
 func _try_place_attraction(data: AttractionData, cell: Vector2i) -> void:
-	# TODO: check if can place
-	var can_place: bool = true
-	if not can_place:
+	var world_position: Vector2 = cell * _grid_size
+	if not _can_place_attraction(_attraction_preview, world_position):
 		return
 
 	var attraction: Attraction = Attraction.create_attraction(data)
-	attraction.global_position = cell * _grid_size
+	attraction.global_position = world_position
+
 	_props_root.add_child(attraction)
 
 	_destroy_preview()
 
 	current_state = "_state_free"
+
+
+func _can_place_attraction(attraction: Attraction, world_position: Vector2) -> bool:
+	var query: PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
+	query.shape = attraction.get_collision_shape()
+	query.transform = Transform2D(0.0, world_position + attraction.get_collision_offset())
+	query.collision_mask = ATTRACTION_COLLISION_LAYER
+	query.collide_with_bodies = true
+	query.collide_with_areas = false
+
+	var space_state: PhysicsDirectSpaceState2D = _props_root.get_world_2d().direct_space_state
+	return space_state.intersect_shape(query, 1).is_empty()
+
+
+func _on_attraction_menu_option_selected(data: AttractionData) -> void:
+	_create_preview(data)
+
+	current_state = "_state_layout"
