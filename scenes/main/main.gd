@@ -19,8 +19,8 @@ var _attraction_preview: Attraction
 
 
 func _init() -> void:
-	state_machine.add_states(_state_free, _enter_state_free, Callable())
-	state_machine.add_states(_state_layout, _enter_state_layout, Callable())
+	state_machine.add_states(_state_free, _state_free_input, _enter_state_free, Callable())
+	state_machine.add_states(_state_layout, _state_layout_input, _enter_state_layout, Callable())
 
 
 func _ready() -> void:
@@ -32,18 +32,18 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-	state_machine.update(delta)
+	state_machine.process(delta)
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if current_state != "_state_layout":
-		return
-	if event.is_action_pressed("layout_accept"):
-		_try_place_attraction(_attraction_preview.get_data(), _get_mouse_tile())
-		get_viewport().set_input_as_handled()
+	state_machine.unhandled_input(event)
 
 
 func _state_free(_delta: float) -> void:
+	pass
+
+
+func _state_free_input(_event: InputEvent) -> void:
 	pass
 
 
@@ -57,6 +57,12 @@ func _state_layout(_delta: float) -> void:
 
 func _enter_state_layout() -> void:
 	_player.set_physics_process(false)
+
+
+func _state_layout_input(event: InputEvent) -> void:
+	if event.is_action_pressed("layout_accept"):
+		_try_place_attraction(_attraction_preview.get_data(), _get_mouse_tile())
+		get_viewport().set_input_as_handled()
 
 
 func _create_preview(data: AttractionData) -> void:

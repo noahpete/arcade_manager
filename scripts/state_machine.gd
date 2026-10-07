@@ -7,13 +7,15 @@ var _state_dictionary = { }
 
 func add_states(
 	normal_state_callable: Callable,
+	input_state_callable: Callable,
 	enter_state_callable: Callable,
-	leave_state_callable: Callable,
+	exit_state_callable: Callable,
 ):
 	_state_dictionary[normal_state_callable.get_method()] = {
 		"normal": normal_state_callable,
+		"input": input_state_callable,
 		"enter": enter_state_callable,
-		"leave": leave_state_callable,
+		"exit": exit_state_callable,
 	}
 
 
@@ -25,9 +27,14 @@ func set_initial_state(state_callable: Callable):
 		push_warning("No state with name " + state_name)
 
 
-func update(delta: float):
+func process(delta: float):
 	if current_state != null:
 		(_state_dictionary[current_state].normal as Callable).call(delta)
+
+
+func unhandled_input(event: InputEvent) -> void:
+	if current_state != null:
+		(_state_dictionary[current_state].input as Callable).call(event)
 
 
 func change_state(state_callable: Callable):
@@ -40,11 +47,11 @@ func change_state(state_callable: Callable):
 
 func _set_state(state_name: String):
 	if current_state:
-		var leave_callable = _state_dictionary[current_state].leave as Callable
-		if !leave_callable.is_null():
-			leave_callable.call()
+		var exit_callable: Callable = _state_dictionary[current_state].exit as Callable
+		if not exit_callable.is_null():
+			exit_callable.call()
 
 	current_state = state_name
-	var enter_callable = _state_dictionary[current_state].enter as Callable
-	if !enter_callable.is_null():
+	var enter_callable: Callable = _state_dictionary[current_state].enter as Callable
+	if not enter_callable.is_null():
 		enter_callable.call()
