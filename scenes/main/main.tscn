@@ -18,28 +18,37 @@ sources/0 = SubResource("TileSetAtlasSource_k2fmo")
 [node name="Main" type="Node" unique_id=1697833261]
 script = ExtResource("1_6q06x")
 
+[node name="GridManager" type="Node" parent="." unique_id=1609230179]
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=971080370]
 zoom = Vector2(1.2, 1.2)
 
 [node name="World" type="Node2D" parent="." unique_id=2034687055]
+y_sort_enabled = true
 script = ExtResource("2_ow5a4")
 
-[node name="TileMap" type="Node2D" parent="World" unique_id=782851105]
+[node name="TileMapLayers" type="Node2D" parent="World" unique_id=782851105]
+z_index = -1
 
-[node name="Floor" type="TileMapLayer" parent="World/TileMap" unique_id=434054797]
+[node name="Floor" type="TileMapLayer" parent="World/TileMapLayers" unique_id=434054797]
 unique_name_in_owner = true
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAABAP7/AAAAAAAAAAABAAEAAAAAAAAAAAD9////AAAAAAAAAAACAAAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hyk8p")
 script = ExtResource("4_hujxm")
 
-[node name="YSortRoot" type="Node2D" parent="World" unique_id=1173161168]
+[node name="Props" type="Node2D" parent="World" unique_id=1524708903]
+unique_name_in_owner = true
 y_sort_enabled = true
 
-[node name="Player" parent="World/YSortRoot" unique_id=946345545 instance=ExtResource("1_hyk8p")]
-unique_name_in_owner = true
-
-[node name="Counter" parent="World/YSortRoot" unique_id=2089761166 instance=ExtResource("2_k2fmo")]
+[node name="Counter" parent="World/Props" unique_id=2089761166 instance=ExtResource("2_k2fmo")]
 position = Vector2(0, -9)
+
+[node name="Entities" type="Node2D" parent="World" unique_id=1173161168]
+unique_name_in_owner = true
+y_sort_enabled = true
+
+[node name="Player" parent="World/Entities" unique_id=946345545 instance=ExtResource("1_hyk8p")]
+unique_name_in_owner = true
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2112652605]
 

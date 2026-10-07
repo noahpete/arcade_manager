@@ -12,7 +12,7 @@ var _grid_size: int
 
 @onready var player: Player = %Player
 @onready var grid_tile_map_layer: TileMapLayer = %Floor
-@onready var y_sort_root: Node2D = $World/YSortRoot
+@onready var props: Node2D = %Props
 
 
 func _init() -> void:
@@ -61,4 +61,4 @@ func _on_attraction_place_requested(data: AttractionData, cell: Vector2i) -> voi
 
 	var attraction: Attraction = Attraction.create_attraction(data)
 	attraction.global_position = cell * _grid_size
-	y_sort_root.add_child(attraction)
+	props.add_child(attraction)
