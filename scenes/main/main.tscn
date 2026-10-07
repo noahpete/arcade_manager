@@ -4,8 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://ihcwaspapk3u" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="Texture2D" uid="uid://0kqfowgatfdc" path="res://assets/tilemap.png" id="2_iuonh"]
 [ext_resource type="PackedScene" uid="uid://ddj6mda182wr1" path="res://scenes/entities/counter/counter.tscn" id="2_k2fmo"]
-[ext_resource type="Script" uid="uid://d08767visd72u" path="res://scenes/main/world.gd" id="2_ow5a4"]
-[ext_resource type="Script" uid="uid://cmtvajmv8aw1g" path="res://scenes/main/floor.gd" id="4_hujxm"]
 [ext_resource type="PackedScene" uid="uid://c1fqr183qsvxj" path="res://scenes/ui/attraction_menu/attraction_menu.tscn" id="7_hujxm"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_k2fmo"]
@@ -15,17 +13,18 @@ texture = ExtResource("2_iuonh")
 [sub_resource type="TileSet" id="TileSet_hyk8p"]
 sources/0 = SubResource("TileSetAtlasSource_k2fmo")
 
+[sub_resource type="GDScript" id="GDScript_ow5a4"]
+script/source = "extends TileMapLayer
+"
+
 [node name="Main" type="Node" unique_id=1697833261]
 script = ExtResource("1_6q06x")
-
-[node name="GridManager" type="Node" parent="." unique_id=1609230179]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=971080370]
 zoom = Vector2(1.2, 1.2)
 
 [node name="World" type="Node2D" parent="." unique_id=2034687055]
 y_sort_enabled = true
-script = ExtResource("2_ow5a4")
 
 [node name="TileMapLayers" type="Node2D" parent="World" unique_id=782851105]
 z_index = -1
@@ -34,13 +33,13 @@ z_index = -1
 unique_name_in_owner = true
 tile_map_data = PackedByteArray("AAD/////AAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP//AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAABAP7/AAAAAAAAAAABAAEAAAAAAAAAAAD9////AAAAAAAAAAACAAAAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_hyk8p")
-script = ExtResource("4_hujxm")
+script = SubResource("GDScript_ow5a4")
 
 [node name="Props" type="Node2D" parent="World" unique_id=1524708903]
 unique_name_in_owner = true
 y_sort_enabled = true
 
-[node name="Counter" parent="World/Props" unique_id=2089761166 instance=ExtResource("2_k2fmo")]
+[node name="Counter" parent="World/Props" unique_id=1838473578 instance=ExtResource("2_k2fmo")]
 position = Vector2(0, -9)
 
 [node name="Entities" type="Node2D" parent="World" unique_id=1173161168]
