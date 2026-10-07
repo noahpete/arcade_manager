@@ -2,6 +2,7 @@ class_name Main
 extends Node
 
 const GRID_DIVISIONS: float = 2.0
+const GRID_MOUSE_OFFSET: Vector2 = Vector2(0.0, 10.0)
 
 var state_machine: StateMachine = StateMachine.new()
 var current_state: String:
@@ -15,7 +16,7 @@ var _attraction_preview: Attraction
 
 @onready var _player: Player = %Player
 @onready var _tile_map_layer: TileMapLayer = %Ground
-@onready var _props: Node2D = %Props
+@onready var _props_root: Node2D = %Props
 
 
 func _init() -> void:
@@ -67,7 +68,7 @@ func _state_layout_input(event: InputEvent) -> void:
 
 func _create_preview(data: AttractionData) -> void:
 	_attraction_preview = Attraction.create_attraction(data, true)
-	_props.add_child(_attraction_preview)
+	_props_root.add_child(_attraction_preview)
 
 
 func _destroy_preview() -> void:
@@ -78,7 +79,7 @@ func _destroy_preview() -> void:
 
 func _get_mouse_tile() -> Vector2i:
 	var mouse_position: Vector2 = _tile_map_layer.get_global_mouse_position()
-	return _convert_world_position_to_tile(mouse_position)
+	return _convert_world_position_to_tile(mouse_position + GRID_MOUSE_OFFSET)
 
 
 func _convert_world_position_to_tile(world_position: Vector2) -> Vector2i:
@@ -100,7 +101,7 @@ func _try_place_attraction(data: AttractionData, cell: Vector2i) -> void:
 
 	var attraction: Attraction = Attraction.create_attraction(data)
 	attraction.global_position = cell * _grid_size
-	_props.add_child(attraction)
+	_props_root.add_child(attraction)
 
 	_destroy_preview()
 
