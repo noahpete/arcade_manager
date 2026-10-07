@@ -1,0 +1,15 @@
+[gd_resource type="TileSet" format=3 uid="uid://daet74ejyldp5"]
+
+[ext_resource type="Texture2D" uid="uid://bolturv2v0qei" path="res://assets/zone_tile_set.png" id="1_ou7in"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t08ib"]
+texture = ExtResource("1_ou7in")
+0:0/0 = 0
+0:0/0/custom_data_0 = &"arcade"
+1:0/0 = 0
+2:0/0 = 0
+
+[resource]
+custom_data_layer_0/name = "zone"
+custom_data_layer_0/type = 21
+sources/0 = SubResource("TileSetAtlasSource_t08ib")

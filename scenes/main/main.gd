@@ -4,6 +4,8 @@ extends Node
 const GRID_DIVISIONS: float = 2.0
 const GRID_MOUSE_OFFSET: Vector2 = Vector2(0.0, 10.0)
 const ATTRACTION_COLLISION_LAYER: int = 1 << 4 # Layer 5 (value 16)
+const FADE_ANIMATION_DURATION: float = 0.2
+const FADE_WALL_OPACITY: float = 0.2
 
 var state_machine: StateMachine = StateMachine.new()
 var current_state: String:
@@ -16,8 +18,10 @@ var _grid_size: int
 var _attraction_preview: Attraction
 
 @onready var _player: Player = %Player
-@onready var _tile_map_layer: TileMapLayer = %Ground
+@onready var _ground: TileMapLayer = %Ground
+@onready var _structures: TileMapLayer = %Structures
 @onready var _props_root: Node2D = %Props
+@onready var _zone_manager: ZoneManager = %ZoneManager
 
 
 func _init() -> void:
@@ -27,10 +31,11 @@ func _init() -> void:
 
 func _ready() -> void:
 	Events.attraction_menu_option_selected.connect(_on_attraction_menu_option_selected)
+	_zone_manager.zone_changed.connect(_on_zone_changed)
 
 	state_machine.set_initial_state(_state_free)
 
-	_grid_size = int(_tile_map_layer.tile_set.tile_size.x / GRID_DIVISIONS)
+	_grid_size = int(_ground.tile_set.tile_size.x / GRID_DIVISIONS)
 
 
 func _process(delta: float) -> void:
@@ -81,7 +86,7 @@ func _destroy_preview() -> void:
 
 
 func _get_mouse_tile() -> Vector2i:
-	var mouse_position: Vector2 = _tile_map_layer.get_global_mouse_position()
+	var mouse_position: Vector2 = _ground.get_global_mouse_position()
 	return _convert_world_position_to_tile(mouse_position + GRID_MOUSE_OFFSET)
 
 
@@ -117,7 +122,20 @@ func _can_place_attraction(attraction: Attraction, world_position: Vector2) -> b
 	return space_state.intersect_shape(query, 1).is_empty()
 
 
+func _fade_walls(alpha: float) -> void:
+	var tween: Tween = create_tween()
+	tween.tween_property(_structures, "modulate:a", alpha, FADE_ANIMATION_DURATION)
+
+
 func _on_attraction_menu_option_selected(data: AttractionData) -> void:
 	_create_preview(data)
 
 	current_state = "_state_layout"
+
+
+func _on_zone_changed(new_zone: StringName, _old_zone: StringName = &"none") -> void:
+	match new_zone:
+		&"arcade":
+			_fade_walls(FADE_WALL_OPACITY)
+		&"none":
+			_fade_walls(1.0)

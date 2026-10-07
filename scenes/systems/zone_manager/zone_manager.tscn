@@ -1,0 +1,11 @@
+[gd_scene format=4 uid="uid://bpabjwajvym1i"]
+
+[ext_resource type="TileSet" uid="uid://daet74ejyldp5" path="res://resources/tile_sets/zone_tile_set.tres" id="1_t1hdg"]
+[ext_resource type="Script" uid="uid://chpena23ba0tt" path="res://scenes/systems/zone_manager/zone_manager.gd" id="2_7x57d"]
+
+[node name="ZoneManager" type="TileMapLayer" unique_id=762516575]
+visible = false
+z_index = 999
+tile_map_data = PackedByteArray("AAD9/wEAAAAAAAAAAAD+/wEAAAAAAAAAAAD//wEAAAAAAAAAAAAAAAEAAAAAAAAAAAABAAEAAAAAAAAAAAACAAEAAAAAAAAAAAACAAAAAAAAAAAAAAACAP//AAAAAAAAAAACAP7/AAAAAAAAAAABAP7/AAAAAAAAAAAAAP7/AAAAAAAAAAD///7/AAAAAAAAAAD+//7/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD9/wAAAAAAAAAAAAD+/wAAAAAAAAAAAAD//wAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAABAP//AAAAAAAAAAD/////AAAAAAAAAAD+////AAAAAAAAAAAAAP//AAAAAAAAAAA=")
+tile_set = ExtResource("1_t1hdg")
+script = ExtResource("2_7x57d")
