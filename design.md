@@ -193,3 +193,13 @@ Keep the game **playable at all times**. Use placeholder art until the core loop
 
 - Polish
   - Particles: add shines around prizes, frustration/emotes above characters, etc.
+
+
+
+
+
+
+InteractableProp
+- InteractableArea
+  - Shape2D
+- OutlinedSprite2D
