@@ -1,6 +1,10 @@
 class_name Attraction
 extends StaticBody2D
 
+const ATTRACTION_COLLISION_LAYER: int = 1 << 4 # Layer 5 (value 16)
+const PREVIEW_VALID_COLOR: Color = Color(1.0, 1.0, 1.0, 0.5)
+const PREVIEW_INVALID_COLOR: Color = Color(1.0, 0.3, 0.3, 0.5)
+
 var _data: AttractionData
 var _is_preview: bool = false
 
@@ -30,29 +34,38 @@ func _ready() -> void:
 	interactable_area_2d.focus_lost.connect(outlined_sprite_2d.set_outline.bind(false))
 
 	if _is_preview:
-		enable_preview()
+		_enable_preview()
 
 
 func get_data() -> AttractionData:
 	return _data
 
 
-func get_collision_shape() -> Shape2D:
-	return collision_shape_2d.shape
+func is_valid_at(world_position: Vector2) -> bool:
+	var query: PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
+	query.shape = collision_shape_2d.shape
+	query.transform = Transform2D(0.0, world_position + collision_shape_2d.position)
+	query.collision_mask = ATTRACTION_COLLISION_LAYER
+	query.collide_with_bodies = true
+	query.collide_with_areas = false
+
+	var space_state: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
+	return space_state.intersect_shape(query, 1).is_empty()
 
 
-func get_collision_offset() -> Vector2:
-	return collision_shape_2d.position
+func process_preview(world_position: Vector2) -> void:
+	global_position = world_position
+	_fade_by_validity(is_valid_at(world_position))
 
 
-func set_valid(is_valid: bool) -> void:
-	modulate = Color(1.0, 1.0, 1.0, 0.5) if is_valid else Color(1.0, 0.3, 0.3, 0.5)
+func _fade_by_validity(is_valid: bool) -> void:
+	modulate = PREVIEW_VALID_COLOR if is_valid else PREVIEW_INVALID_COLOR
 
 
-func enable_preview() -> void:
+func _enable_preview() -> void:
 	collision_layer = 0
 	collision_mask = 0
 	interactable_area_2d.monitorable = false
 	interactable_area_2d.monitoring = false
 	interactable_area_2d.process_mode = Node.PROCESS_MODE_DISABLED
-	modulate = Color(1.0, 1.0, 1.0, 0.5)
+	_fade_by_validity(true)

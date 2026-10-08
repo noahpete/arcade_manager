@@ -3,12 +3,18 @@
 [ext_resource type="Script" uid="uid://d4llg6jdjmn8g" path="res://scenes/main/main.gd" id="1_6q06x"]
 [ext_resource type="PackedScene" uid="uid://ihcwaspapk3u" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="TileSet" uid="uid://30iiewiursf7" path="res://resources/tile_sets/tile_set.tres" id="2_6q06x"]
+[ext_resource type="Script" uid="uid://du67u00mkdjoo" path="res://scenes/main/scripts/attraction_manager.gd" id="2_hujxm"]
 [ext_resource type="PackedScene" uid="uid://ddj6mda182wr1" path="res://scenes/entities/counter/counter.tscn" id="2_k2fmo"]
 [ext_resource type="PackedScene" uid="uid://bpabjwajvym1i" path="res://scenes/systems/zone_manager/zone_manager.tscn" id="3_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://c1fqr183qsvxj" path="res://scenes/ui/attraction_menu/attraction_menu.tscn" id="7_hujxm"]
 
 [node name="Main" type="Node" unique_id=1697833261]
 script = ExtResource("1_6q06x")
+
+[node name="AttractionManager" type="Node" parent="." unique_id=579078503 node_paths=PackedStringArray("_ground", "_props_root")]
+script = ExtResource("2_hujxm")
+_ground = NodePath("../World/TileMapLayers/Ground")
+_props_root = NodePath("../World/Props")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=971080370]
 zoom = Vector2(1.2, 1.2)

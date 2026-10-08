@@ -176,7 +176,7 @@ Keep the game **playable at all times**. Use placeholder art until the core loop
 
 *Always end a work session by writing the very next task.*
 
-1. Interaction system
+1. Interaction systems
 2. Money autoload and HUD
 3. Generic machine scene
 
@@ -188,6 +188,8 @@ Keep the game **playable at all times**. Use placeholder art until the core loop
 - Upgrades
   - Can buy bigger bags for larger hauls from bank of coins
   - Services to fill coins for you
+  - Attractions leveling systems
+	- get upgrades over time --> more tickets you earn, more XP towards next level
 
 - Polish
   - Particles: add shines around prizes, frustration/emotes above characters, etc.

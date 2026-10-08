@@ -1,8 +1,6 @@
 class_name ZoneManager
 extends TileMapLayer
 
-signal zone_changed(new_zone: StringName, old_zone: StringName)
-
 const NO_ZONE: StringName = &"none"
 
 @export var _player: Player
@@ -32,4 +30,4 @@ func refresh(new_cell: Vector2i) -> void:
 		return
 	_current_zone = new_zone
 	_last_cell = new_cell
-	zone_changed.emit(new_zone, old_zone)
+	Events.zone_changed.emit(new_zone, old_zone)
