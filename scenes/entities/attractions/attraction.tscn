@@ -3,43 +3,16 @@
 [ext_resource type="Script" uid="uid://caqldbbbglivr" path="res://scenes/entities/attractions/attraction.gd" id="1_0ih06"]
 [ext_resource type="PackedScene" uid="uid://b3vsbx44ke76r" path="res://scenes/components/interactable_area_2d/interactable_area_2d.tscn" id="1_2k8gp"]
 [ext_resource type="PackedScene" uid="uid://12t86xqrfn8" path="res://scenes/components/outlined_sprite_2d/outlined_sprite_2d.tscn" id="3_4t2vg"]
+[ext_resource type="Shader" uid="uid://ucwwdt0540v5" path="res://resources/shaders/outline.gdshader" id="4_a4wr8"]
 
-[sub_resource type="Shader" id="Shader_vldwu"]
-code = "shader_type canvas_item;
-
-uniform vec4 outline_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
-uniform float outline_width : hint_range(0.0, 10.0) = 2.0;
-
-void fragment() {
-    vec4 col = texture(TEXTURE, UV);
-
-    // Check if the current pixel is transparent
-    if (col.a == 0.0) {
-        vec2 size = TEXTURE_PIXEL_SIZE * outline_width;
-
-        // Sample neighboring pixels (Up, Down, Left, Right)
-        float alpha = texture(TEXTURE, UV + vec2(0.0, size.y)).a;
-        alpha += texture(TEXTURE, UV - vec2(0.0, size.y)).a;
-        alpha += texture(TEXTURE, UV + vec2(size.x, 0.0)).a;
-        alpha += texture(TEXTURE, UV - vec2(size.x, 0.0)).a;
-
-        // If any neighbor is solid, draw the outline
-        if (alpha > 0.0) {
-            COLOR = outline_color;
-        } else {
-            COLOR = col;
-        }
-    } else {
-        COLOR = col;
-    }
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4t2vg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a4wr8"]
 resource_local_to_scene = true
-shader = SubResource("Shader_vldwu")
-shader_parameter/outline_color = Color(1, 1, 1, 0)
-shader_parameter/outline_width = 1.0000000475
+shader = ExtResource("4_a4wr8")
+shader_parameter/enabled = false
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [node name="Attraction" type="StaticBody2D" unique_id=2089761166]
 collision_layer = 16
@@ -51,6 +24,6 @@ script = ExtResource("1_0ih06")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D" unique_id=2060555258]
 
 [node name="OutlinedSprite2D" parent="." unique_id=891692175 instance=ExtResource("3_4t2vg")]
-material = SubResource("ShaderMaterial_4t2vg")
+material = SubResource("ShaderMaterial_a4wr8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=591705046]

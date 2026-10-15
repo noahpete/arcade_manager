@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dhxsmiabm761m"]
+
+[ext_resource type="PackedScene" uid="uid://12t86xqrfn8" path="res://scenes/components/outlined_sprite_2d/outlined_sprite_2d.tscn" id="1_220fg"]
+[ext_resource type="Script" uid="uid://chfqv3stnm8ji" path="res://scenes/entities/computer/computer.gd" id="1_vvd0v"]
+[ext_resource type="Texture2D" uid="uid://v2hnvc5no7kk" path="res://assets/computer.png" id="2_wb1sg"]
+[ext_resource type="PackedScene" uid="uid://b3vsbx44ke76r" path="res://scenes/components/interactable_area_2d/interactable_area_2d.tscn" id="3_wb1sg"]
+[ext_resource type="Shader" uid="uid://ucwwdt0540v5" path="res://resources/shaders/outline.gdshader" id="4_rp7jb"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rp7jb"]
+height = 28.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_segt1"]
+resource_local_to_scene = true
+shader = ExtResource("4_rp7jb")
+shader_parameter/enabled = false
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 1.0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[node name="Computer" type="Node2D" unique_id=1886909349]
+script = ExtResource("1_vvd0v")
+
+[node name="InteractableArea2D" parent="." unique_id=910820004 instance=ExtResource("3_wb1sg")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractableArea2D" unique_id=1374558350]
+position = Vector2(0, -3)
+shape = SubResource("CapsuleShape2D_rp7jb")
+
+[node name="OutlinedSprite2D" parent="." unique_id=891692175 instance=ExtResource("1_220fg")]
+material = SubResource("ShaderMaterial_segt1")
+texture = ExtResource("2_wb1sg")
+offset = Vector2(-4, -9)

@@ -203,3 +203,24 @@ InteractableProp
 - InteractableArea
   - Shape2D
 - OutlinedSprite2D
+
+
+### Arcade Games
+- Cabinet
+  - PacMan
+  - Shooter
+  - Fighting
+  - Rhythm/dance
+- Pinball
+- Driving/racing
+- Tabletop
+  - Air hockey
+  - Billiards
+- Basketball shootout
+- Skee ball
+- Whacking
+- Ball drop
+- Wheel
+- Coin pusher
+- Crane/claw
+- Traveling light game

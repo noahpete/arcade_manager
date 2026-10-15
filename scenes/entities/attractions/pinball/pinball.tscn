@@ -1,54 +1,17 @@
 [gd_scene format=3 uid="uid://cg4dh5fjx8iv3"]
 
 [ext_resource type="PackedScene" uid="uid://bhgd4e180xjxp" path="res://scenes/entities/attractions/attraction.tscn" id="1_m6idx"]
-[ext_resource type="Texture2D" uid="uid://k1mvty5yh0i" path="res://assets/pinball.png" id="2_b7tij"]
 [ext_resource type="Script" uid="uid://dlomlh4p4wl3b" path="res://scenes/entities/attractions/pinball/pinball.gd" id="2_c2uee"]
+[ext_resource type="Texture2D" uid="uid://cysisun2uribc" path="res://scenes/entities/attractions/pinball/pinball_side.png" id="3_c2uee"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c2uee"]
 radius = 4.0
 height = 24.0
 
-[sub_resource type="Shader" id="Shader_vldwu"]
-code = "shader_type canvas_item;
-
-uniform vec4 outline_color : source_color = vec4(1.0, 1.0, 1.0, 1.0);
-uniform float outline_width : hint_range(0.0, 10.0) = 2.0;
-
-void fragment() {
-    vec4 col = texture(TEXTURE, UV);
-
-    // Check if the current pixel is transparent
-    if (col.a == 0.0) {
-        vec2 size = TEXTURE_PIXEL_SIZE * outline_width;
-
-        // Sample neighboring pixels (Up, Down, Left, Right)
-        float alpha = texture(TEXTURE, UV + vec2(0.0, size.y)).a;
-        alpha += texture(TEXTURE, UV - vec2(0.0, size.y)).a;
-        alpha += texture(TEXTURE, UV + vec2(size.x, 0.0)).a;
-        alpha += texture(TEXTURE, UV - vec2(size.x, 0.0)).a;
-
-        // If any neighbor is solid, draw the outline
-        if (alpha > 0.0) {
-            COLOR = outline_color;
-        } else {
-            COLOR = col;
-        }
-    } else {
-        COLOR = col;
-    }
-}
-"
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_c2uee"]
-resource_local_to_scene = true
-shader = SubResource("Shader_vldwu")
-shader_parameter/outline_color = Color(1, 1, 1, 0)
-shader_parameter/outline_width = 1.0000000475
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c2uee"]
 size = Vector2(11, 6)
 
-[node name="PinballMachine" unique_id=2089761166 instance=ExtResource("1_m6idx")]
+[node name="Pinball" unique_id=2089761166 instance=ExtResource("1_m6idx")]
 script = ExtResource("2_c2uee")
 
 [node name="InteractableArea2D" parent="." index="0" unique_id=1509468497]
@@ -60,10 +23,8 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_c2uee")
 
 [node name="OutlinedSprite2D" parent="." index="1" unique_id=891692175]
-material = SubResource("ShaderMaterial_c2uee")
-position = Vector2(8, 0)
-texture = ExtResource("2_b7tij")
-offset = Vector2(-9, -15)
+position = Vector2(0, -14)
+texture = ExtResource("3_c2uee")
 
 [node name="CollisionShape2D" parent="." index="2" unique_id=591705046]
 position = Vector2(10.5, -4)
