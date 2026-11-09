@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmugypvyeojli"
-path="res://.godot/imported/ie_logo.png-43768e4f482eae738ae5c00c1ed5bee3.ctex"
+uid="uid://b248ixneup7hk"
+path="res://.godot/imported/ticket.png-6e5af4268d216543d834afb3b2ad7979.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ie_logo.png"
-dest_files=["res://.godot/imported/ie_logo.png-43768e4f482eae738ae5c00c1ed5bee3.ctex"]
+source_file="res://assets/ui/ticket.png"
+dest_files=["res://.godot/imported/ticket.png-6e5af4268d216543d834afb3b2ad7979.ctex"]
 
 [params]
 

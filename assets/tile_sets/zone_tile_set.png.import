@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bufda3spsh716"
-path="res://.godot/imported/xp_background.png-635816e50af7502e0d113606a20bdbb7.ctex"
+uid="uid://bolturv2v0qei"
+path="res://.godot/imported/zone_tile_set.png-2e48ccf75624ebeefaf766a1c308f3c8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/xp_background.png"
-dest_files=["res://.godot/imported/xp_background.png-635816e50af7502e0d113606a20bdbb7.ctex"]
+source_file="res://assets/tile_sets/zone_tile_set.png"
+dest_files=["res://.godot/imported/zone_tile_set.png-2e48ccf75624ebeefaf766a1c308f3c8.ctex"]
 
 [params]
 
