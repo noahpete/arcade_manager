@@ -1,3 +1,20 @@
+# Arcade Manager
+
+## TODOs
+
+Systems
+	Gameplay
+		[ ] Economy
+	Arcade
+		[ ] Machine placement
+		[ ] Decoration placement
+		[ ] Floor expansion
+	Camera
+		[ ] Player follow camera
+		[ ] Transition to indoors
+
+---
+
 # Arcade Manager 2D: Design & Plan
 
 *Living document. Update it whenever a decision is made. Unsorted ideas go in the Parking Lot, not the main sections.*
