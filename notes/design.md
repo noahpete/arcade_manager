@@ -3,6 +3,9 @@
 ## TODOs
 
 Systems
+	Mechanisms
+		[ ] (Low priority) Crack/texture automation
+		[ ] ZoneManager: make it global (across .tscn scenes)
 	Gameplay
 		[ ] Economy
 	Arcade
