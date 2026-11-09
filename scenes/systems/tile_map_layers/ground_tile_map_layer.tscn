@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c1veras7e2sk3"]
+
+[ext_resource type="TileSet" uid="uid://30iiewiursf7" path="res://resources/tile_sets/tile_set.tres" id="1_lmmg8"]
+
+[node name="GroundTileMapLayer" type="TileMapLayer" unique_id=1138106254]
+z_index = -1
+tile_set = ExtResource("1_lmmg8")

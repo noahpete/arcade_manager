@@ -5,7 +5,7 @@ const FADE_ANIMATION_DURATION: float = 0.2
 const FADE_WALL_OPACITY: float = 0.2
 
 @onready var _player: Player = %Player
-@onready var _structures: TileMapLayer = %Structures
+#@onready var _structures: TileMapLayer = %Structures
 
 
 func _ready() -> void:
@@ -15,8 +15,9 @@ func _ready() -> void:
 
 
 func _fade_walls(alpha: float) -> void:
-	var tween: Tween = create_tween()
-	tween.tween_property(_structures, "modulate:a", alpha, FADE_ANIMATION_DURATION)
+	pass
+	#var tween: Tween = create_tween()
+	#tween.tween_property(_structures, "modulate:a", alpha, FADE_ANIMATION_DURATION)
 
 
 func _on_attraction_menu_option_selected(_data: AttractionData) -> void:
