@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ihcwaspapk3u" path="res://scenes/player/player.tscn" id="1_hyk8p"]
 [ext_resource type="TileSet" uid="uid://30iiewiursf7" path="res://resources/tile_sets/tile_set.tres" id="2_6q06x"]
 [ext_resource type="Script" uid="uid://du67u00mkdjoo" path="res://scenes/main/scripts/attraction_manager.gd" id="2_hujxm"]
+[ext_resource type="PackedScene" uid="uid://c3gbnk273hayc" path="res://scenes/components/follower_component/follower_component.tscn" id="3_b1x3f"]
 [ext_resource type="PackedScene" uid="uid://bpabjwajvym1i" path="res://scenes/systems/zone_manager/zone_manager.tscn" id="3_ow5a4"]
 [ext_resource type="PackedScene" uid="uid://ddoxoprl5u8a" path="res://scenes/buildings/arcade.tscn" id="5_hujxm"]
 [ext_resource type="PackedScene" uid="uid://ce3xekjuw53j0" path="res://scenes/buildings/bank/bank.tscn" id="6_yyfjg"]
@@ -17,8 +18,13 @@ script = ExtResource("2_hujxm")
 _ground = NodePath("../World/Ground")
 _props_root = NodePath("../World/Props")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=971080370]
-zoom = Vector2(1.2, 1.2)
+[node name="Camera2D" type="Camera2D" parent="." unique_id=266825879]
+
+[node name="FollowerComponent" parent="Camera2D" unique_id=1203009167 node_paths=PackedStringArray("target") instance=ExtResource("3_b1x3f")]
+show_dead_zone = true
+target = NodePath("../../World/Entities/Player")
+dead_zone_size = Vector2(40, 40)
+smoothing = 0.2
 
 [node name="World" type="Node2D" parent="." unique_id=2034687055]
 

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c3gbnk273hayc"]
+
+[ext_resource type="Script" uid="uid://dvsmsalttacjx" path="res://scenes/components/follower_component/follower_component.gd" id="1_y8ost"]
+
+[node name="FollowerComponent" type="Node2D" unique_id=1203009167]
+script = ExtResource("1_y8ost")
