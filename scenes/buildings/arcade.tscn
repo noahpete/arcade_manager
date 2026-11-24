@@ -1,16 +1,15 @@
 [gd_scene format=4 uid="uid://ddoxoprl5u8a"]
 
-[ext_resource type="PackedScene" uid="uid://c1veras7e2sk3" path="res://scenes/systems/tile_map_layers/ground_tile_map_layer.tscn" id="1_2r0nl"]
+[ext_resource type="TileSet" uid="uid://30iiewiursf7" path="res://resources/tile_sets/tile_set.tres" id="1_2r0nl"]
 [ext_resource type="PackedScene" uid="uid://ddj6mda182wr1" path="res://scenes/entities/counter/counter.tscn" id="2_2r0nl"]
 
 [node name="Arcade" type="Node2D" unique_id=490715564]
-y_sort_enabled = true
 
-[node name="Ground" parent="." unique_id=1138106254 instance=ExtResource("1_2r0nl")]
+[node name="Ground" type="TileMapLayer" parent="." unique_id=734025159]
 tile_map_data = PackedByteArray("AAD9//z/AAAAAAAAAAD9//3/AAAAAAAAAAD9//7/AAAAAAAAAAD9////AAAAAAAAAAD+//z/AAAAAAAAAAD+//3/AAAAAAAAAAD+//7/AAAAAAAAAAD+////AAAAAAAAAAD///z/AAAAAAAAAAD///3/AAAAAAAAAAD///7/AAAAAAAAAAD/////AAAAAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAAAAAAAAAABAPz/AAAAAAAAAAABAP3/AAAAAAAAAAABAP7/AAAAAAAAAAABAP//AAAAAAAAAAACAPz/AAAAAAAAAAACAP3/AAAAAAAAAAACAP7/AAAAAAAAAAACAP//AAAAAAAAAAA=")
+tile_set = ExtResource("1_2r0nl")
 
 [node name="Props" type="Node2D" parent="." unique_id=351283306]
-y_sort_enabled = true
 
 [node name="Counter" parent="Props" unique_id=2089761166 instance=ExtResource("2_2r0nl")]
 position = Vector2(0, -42)

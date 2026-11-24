@@ -1,0 +1,8 @@
+[gd_scene format=4 uid="uid://ce3xekjuw53j0"]
+
+[ext_resource type="PackedScene" uid="uid://b0dl1672pfwgk" path="res://scenes/buildings/building.tscn" id="1_5y8sp"]
+
+[node name="Bank" unique_id=463873388 instance=ExtResource("1_5y8sp")]
+
+[node name="Ground" parent="." index="0" unique_id=1936928338]
+tile_map_data = PackedByteArray("AAD9//z/AAAEAAAAAAD9//3/AAAEAAAAAAD9//7/AAAEAAAAAAD9////AAAEAAAAAAD+//z/AAAEAAAAAAD+//3/AAAEAAAAAAD+//7/AAAEAAAAAAD+////AAAEAAAAAAD///z/AAAEAAAAAAD///3/AAAEAAAAAAD///7/AAAEAAAAAAD/////AAAEAAAAAAAAAPz/AAAEAAAAAAAAAP3/AAAEAAAAAAAAAP7/AAAEAAAAAAAAAP//AAAEAAAAAAABAPz/AAAEAAAAAAABAP3/AAAEAAAAAAABAP7/AAAEAAAAAAABAP//AAAEAAAAAAACAPz/AAAEAAAAAAACAP3/AAAEAAAAAAACAP7/AAAEAAAAAAACAP//AAAEAAAAAAA=")
